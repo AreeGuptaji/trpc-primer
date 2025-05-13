@@ -1,0 +1,21 @@
+{
+  "name": "trpc-primer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": "true",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:hello-world": "concurrently --names \"client-side,server-sider\" --prefix name \"yarn workspace client-side start\" \"yarn workspace server-side start\""
+  },
+  "workspaces": [
+    "hello-world/*",
+    "noter-app/*"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
