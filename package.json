@@ -6,11 +6,12 @@
   "private": "true",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:hello-world": "concurrently --names \"client-side,server-sider\" --prefix name \"yarn workspace client-side start\" \"yarn workspace server-side start\""
+    "start:hello-world": "concurrently --names \"client-side,server-sider\" --prefix name \"yarn workspace client-side start\" \"yarn workspace server-side start\"",
+    "start:crud": "yarn workspace crud dev"
   },
   "workspaces": [
     "hello-world/*",
-    "noter-app/*"
+    "crud"
   ],
   "keywords": [],
   "author": "",
