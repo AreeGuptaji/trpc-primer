@@ -1,0 +1,9 @@
+import { AuthButton } from "./_components/AuthButton";
+
+export default function Home() {
+  return (
+    <div>
+      <AuthButton />
+    </div>
+  );
+}
