@@ -1,16 +1,11 @@
 import { publicProcedure, router } from "./trpc";
+import { chatRouter } from "./router/chatRouter";
 
 export const appRouter = router({
   hello: publicProcedure.query(() => {
     return "Hello Universe!";
   }),
-  //   onMessage: publicProcedure.subscription(() => {
-  //     return {
-  //       async *generator() {
-  //         yield { id: 1, message: "Connected to Websocket" };
-  //       },
-  //     };
-  //   }),
+  chat: chatRouter,
 });
 
 export type AppRouter = typeof appRouter;
