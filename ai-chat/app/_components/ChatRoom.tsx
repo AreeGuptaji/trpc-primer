@@ -11,16 +11,19 @@ export default function ChatRoom({ roomId }: { roomId: string }) {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   // Fetch existing messages
-  const { data: messages = [] } = trpc.chat.getMessages.useQuery(
+  const { data } = trpc.chat.getMessages.useQuery(
     { chatRoomId: roomId },
     {
       enabled: !!roomId,
-      onSuccess: (data) => {
-        // Update all messages when initial data loads
-        setAllMessages(data);
-      },
     }
   );
+
+  // Update all messages when data changes
+  useEffect(() => {
+    if (data) {
+      setAllMessages(data);
+    }
+  }, [data]);
 
   // Subscribe to new messages
   trpc.chat.onMessage.useSubscription(

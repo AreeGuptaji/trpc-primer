@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/auth";
 import ChatRoom from "@/app/_components/ChatRoom";
 import Link from "next/link";
-
+import { useParams } from "next/navigation";
 export default async function ChatRoomPage({
   params,
 }: {
@@ -16,8 +16,9 @@ export default async function ChatRoomPage({
   }
 
   // Fetch chat room details
+  const roomId = params.roomId;
   const room = await prisma.chatRoom.findUnique({
-    where: { id: params.roomId },
+    where: { id: roomId },
   });
 
   if (!room) {
@@ -37,7 +38,7 @@ export default async function ChatRoomPage({
         <p className="text-gray-600 mb-6">{room.description}</p>
       )}
 
-      <ChatRoom roomId={params.roomId} />
+      <ChatRoom roomId={roomId} />
     </div>
   );
 }
