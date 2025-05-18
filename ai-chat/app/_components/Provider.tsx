@@ -8,7 +8,7 @@ export default function Provider({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() => {
     const wsClient = createWSClient({
-      url: `ws://localhost:3000/api/trpc`,
+      url: `ws://localhost:3001/api/trpc`,
     });
 
     return trpc.createClient({
@@ -16,6 +16,8 @@ export default function Provider({ children }: { children: React.ReactNode }) {
         splitLink({
           condition(op) {
             // Use WebSocket for subscriptions
+            // If operation type is 'subscription', use WebSocket connection
+            // Otherwise (for queries and mutations), use HTTP
             return op.type === "subscription";
           },
           true: wsLink({
