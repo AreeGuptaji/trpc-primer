@@ -1,0 +1,26 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Authentication patterns with NextAuth.js
+globs: app/api/auth/**/*
+---
+# Authentication Patterns
+
+1. NextAuth.js setup:
+   - Configure providers in `app/api/auth/[...nextauth]/route.ts`
+   - Use Prisma adapter for database integration
+   - Define session and JWT callbacks as needed
+
+2. Protected routes:
+   - Use server-side session validation
+   - Implement client-side auth state with React context
+   - Create protected route wrappers
+   
+
+3. User management:
+   - Store user data in Prisma database
+   - Implement proper session handling
+   - Use proper typing for user objects

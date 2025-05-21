@@ -1,0 +1,28 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+---
+description: Prisma schema and database access patterns
+globs: prisma/**/*
+---
+# Prisma Conventions
+
+1. Schema organization:
+   - Define models in `prisma/schema.prisma`
+   - Use descriptive field names and comments
+   - Implement proper relations between models
+   - Use enums for fixed value sets
+
+2. Database operations:
+   - Access Prisma client through tRPC context
+   - Use transactions for multi-operation changes
+   - Implement proper error handling
+   - Use Prisma's filtering and selection capabilities
+
+3. Migrations:
+   - Generate migrations with `npx prisma migrate dev`
+   - Add descriptive names to migrations
+   - Review migration files before applying
+   - Never edit migration files after they've been applied

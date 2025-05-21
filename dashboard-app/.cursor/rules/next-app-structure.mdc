@@ -1,0 +1,26 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: File organization for Next.js App Router
+globs: app/**/*
+---
+# Next.js App Router Structure
+
+1. Use the App Router directory structure:
+   - `app/page.tsx` - Home page component
+   - `app/layout.tsx` - Root layout with providers
+   - `app/(routes)/[route]/page.tsx` - Route pages
+   - `app/api/[...]/route.ts` - API endpoints (non-tRPC)
+
+2. Component organization:
+   - Place reusable components in `app/components/`
+   - Group related components in subdirectories
+   - Use "use client" directive only when necessary
+
+3. Data fetching:
+   - Prefer Server Components for data fetching
+   - Use React Query hooks with tRPC in Client Components
+   - Implement proper loading states and error boundaries

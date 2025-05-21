@@ -1,0 +1,27 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+---
+description: TypeScript conventions and best practices
+globs: **/*.ts,**/*.tsx
+---
+# TypeScript Standards
+
+1. Type definitions:
+   - Define shared types in `types/` directory
+   - Use proper typing for all functions and components
+   - Avoid `any` type - use `unknown` when type is uncertain
+   - Leverage TypeScript's utility types when appropriate
+
+2. Type imports:
+   - Use explicit imports for types
+   - Import types from their source modules
+   - Define component prop types inline or in separate interfaces
+
+3. Type safety:
+   - Enable strict mode in tsconfig.json
+   - Use type guards for runtime type checking
+   - Implement proper error handling with typed errors
+   - Use discriminated unions for complex state management

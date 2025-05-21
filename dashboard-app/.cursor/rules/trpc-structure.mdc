@@ -1,0 +1,41 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+---
+description: tRPC router and procedure organization
+globs: trpc/**/*
+---
+# tRPC Structure and Conventions
+
+1. Router organization:
+   - Define base router in `trpc/index.ts`
+   - Create domain-specific routers in separate files
+   - Merge routers using `router({})` pattern
+
+2. Procedure conventions:
+   - Use Zod for input validation
+   - Implement proper error handling with formatted errors
+   - Return typed responses for all procedures
+   - Document procedures with comments
+
+3. Example procedure:
+```typescript
+export const userRouter = router({
+  getUser: publicProcedure
+    .input(z.object({ id: z.string() }))
+    .query(async ({ input, ctx }) => {
+      try {
+        return await ctx.prisma.user.findUnique({
+          where: { id: input.id },
+        });
+      } catch (error) {
+        throw new TRPCError({
+          code: 'INTERNAL_SERVER_ERROR',
+          message: 'Failed to fetch user',
+        });
+      }
+    }),
+});
+```
