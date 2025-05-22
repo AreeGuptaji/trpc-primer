@@ -12,7 +12,7 @@ export const productRouter = router({
 
   getById: publicProcedure
     .input(z.object({ id: z.string() }))
-    .query(async ({}) => {
+    .query(async ({ input }) => {
       const product = await prisma.product.findUnique({
         where: { id: input.id },
         include: { category: true },
@@ -79,6 +79,14 @@ export const productRouter = router({
     .input(z.object({ id: z.string() }))
     .mutation(async ({ input, ctx }) => {
       if (ctx.session?.user.role !== "ADMIN") {
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "Only admins can delete products",
+        });
       }
+      const { id } = input;
+      return await prisma.product.delete({
+        where: { id: id },
+      });
     }),
 });
