@@ -117,9 +117,12 @@ export default function CartPage() {
                 <span>${calculateTotal().toFixed(2)}</span>
               </div>
             </div>
-            <button className="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 mb-2">
+            <Link
+              href="/cart/checkout"
+              className="w-full bg-blue-600 text-white py-3 rounded hover:bg-blue-700 mb-2 text-center block"
+            >
               Proceed to Checkout
-            </button>
+            </Link>
             <button
               onClick={() => clearCartMutation.mutate()}
               className="w-full bg-gray-200 text-gray-800 py-2 rounded hover:bg-gray-300"
